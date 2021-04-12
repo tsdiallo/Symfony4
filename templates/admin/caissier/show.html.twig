@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Caissier{% endblock %}
+
+{% block content %}
+    <div class="row">
+         <div class="col-3 pull-right ">
+              <a class="btn btn-large btn-sm btn-primary" style="margin-right: 20px;
+margin-bottom: 5px;" href="{{path('admin.caissier.add')}}" role="button">Nouveau</a>
+        </div>
+
+          
+    </div>
+<table id="profils" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Login</th>
+       <th>Profil</th>
+       <th>Etat</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+{% for caissier in caissiers %}
+
+
+    <tr>
+        
+      <td>{{ caissier.nom}}</td>
+      <td>
+            {{ caissier.prenom}}
+      </td>
+      <td>
+            {{ caissier.login}}
+      </td>
+          <td>
+            {{ caissier.profil.libelle}}
+      </td>
+
+      <td>
+           <a class="btn btn-large btn-xs btn-success" href="#" role="button">{{ caissier.etat}}</a>
+           
+      </td>
+      <td>
+      {% if caissier.etat=='Actif'%}
+        <a class="btn btn-large btn-xs btn-warning" href="{{path('admin.caissier.bloquer',{id:caissier.id,etat:'Inactif'})}}" role="button">Désactiver</a>
+        {% else %}
+        <a class="btn btn-large btn-xs btn-success" href="{{path('admin.caissier.bloquer',{id:caissier.id,etat:'Actif'})}}"role="button">Activer</a>
+      {% endif %}
+         
+         
+          
+           
+      </td>
+     
+     
+    </tr>
+    {% endfor %} 
+</tbody>
+</table>
+
+
+
+{% endblock %}
+{% block titlecontent %}Liste Caissier{% endblock %}
+
+
+
+
+
+{% block javascripts %}
+      {{parent()}}
+<script>
+  $(function () {
+    $('#profils').DataTable()
+
+  })
+</script>
+{% endblock %}

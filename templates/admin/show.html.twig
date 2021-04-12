@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+    <div class="row">
+         <div class="col-3 pull-right ">
+              <a class="btn btn-large btn-sm btn-primary" style="margin-right: 20px;
+margin-bottom: 5px;" href="{{path('admin.profil.add')}}" role="button">Nouveau</a>
+        </div>
+
+          
+    </div>
+<table id="profils" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Libelle</th>
+      
+    </thead>
+    <tbody>
+{% for profil in profils %}
+
+
+    <tr>
+        
+      <td>{{ profil.id}}</td>
+      <td>
+            {{ profil.libelle}}
+      </td>
+     
+      <td> 
+            
+            <a class="btn btn-large btn-xs btn-success" href="{{path('admin.profil.edit',{id:profil.id})}}" role="button">Edit</a>
+           
+              <a class="btn btn-large btn-xs btn-danger" onClick="return confirm('Voulez vous supprimmer ?');" );" href="{{path('admin.profil.delete',{id:profil.id})}}" role="button">Delete</a>
+            
+      
+      </td>
+    </tr>
+    {% endfor %} 
+</tbody>
+</table>
+
+
+
+{% endblock %}
+{% block titlecontent %}Liste Profil{% endblock %}
+
+
+
+
+
+{% block javascripts %}
+      {{parent()}}
+<script>
+  $(function () {
+    $('#profils').DataTable()
+
+  })
+</script>
+{% endblock %}

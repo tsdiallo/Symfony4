@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partenaire{% endblock %}
+
+{% block content %}
+
+{{ form_start(form) }}
+
+  <div class="row">
+
+  <div class="col-md-6">
+
+  <div class="form-group">
+      <div class="s">
+        {{ form_errors(form.rs) }}
+     </div>
+    
+    <label for="email">Raison Social:</label>
+  
+     {{ form_widget(form.rs) }}
+  </div>
+  <div class="form-group">
+    <label for="pwd">NCI:</label>
+     {{ form_widget(form.nci,{ 'attr': {'class': 'form-control'}}) }}
+   
+  </div>
+  <div class="form-group">
+    <label for="pwd">Nom:</label>
+     {{ form_widget(form.nom,{ 'attr': {'class': 'form-control'}}) }}
+   
+  </div>
+   <div class="form-group">
+    <label for="pwd">Prenom:</label>
+     {{ form_widget(form.prenom,{ 'attr': {'class': 'form-control'}}) }}
+   
+  </div>
+   <div class="form-group">
+    <label for="pwd">Login:</label>
+     {{ form_widget(form.login,{ 'attr': {'class': 'form-control'}}) }}
+   
+  </div>
+   <div class="form-group">
+    <label for="pwd">Password:</label>
+     {{ form_widget(form.password,{ 'attr': {'class': 'form-control'}}) }}
+   
+  </div>
+  <div class="form-group">
+    <label for="pwd">Etat:</label>
+     {{ form_widget(form.etat,{ 'attr': {'class': 'form-control'}}) }}
+   
+  </div>
+  
+
+
+    
+  </div>
+
+  <div class="col-md-6">
+   <div class="form-group">
+    <label for="pwd">Solde:</label>
+     {{ form_widget(form.solde,{ 'attr': {'class': 'form-control'}}) }}
+   
+  </div>
+   <div class="pull-right">
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </div>
+    
+  </div>
+
+    
+  </div>
+  
+{{ form_end(form) }}
+
+
+{% endblock %}
+{% block titlecontent %}Nouveau Partenaire{% endblock %}
+
+
+
+
+

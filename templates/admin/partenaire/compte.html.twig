@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comptes{% endblock %}
+
+{% block content %}
+    <div class="row">
+         <div class="col-3 pull-right ">
+              <a class="btn btn-large btn-sm btn-primary" style="margin-right: 20px;
+margin-bottom: 5px;" href="{{path('admin.compte.add',{id: partenaire.id })}}" role="button">Nouveau</a>
+        </div>
+
+          
+    </div>
+<table id="profils" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Solde</th>
+      <th></th>
+    </thead>
+    <tbody>
+{% for compte in partenaire.comptes %}
+
+
+    <tr>
+        
+      <td>{{ compte.numero}}</td>
+      <td>
+            {{ compte.solde}}
+      </td>
+     
+      <td> 
+            
+            <a class="btn btn-large btn-xs btn-success" href="{{path('admin.profil.edit',{id:compte.id})}}" role="button">Depot</a>
+               
+      </td>
+    </tr>
+    {% endfor %} 
+</tbody>
+</table>
+
+
+
+{% endblock %}
+{% block titlecontent %}Liste Profil{% endblock %}
+
+
+
+
+
+{% block javascripts %}
+      {{parent()}}
+<script>
+  $(function () {
+    $('#profils').DataTable()
+
+  })
+</script>
+{% endblock %}
